@@ -1,5 +1,7 @@
 class ProbesController < ApplicationController
   
+  respond_to :json
+  
   def create
     @probe = Probe.new(params[:probe])
     @probe.from_ip = request.remote_ip
@@ -10,6 +12,10 @@ class ProbesController < ApplicationController
         wants.json { render :json => @probe.errors.to_json, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def index
+    respond_with(Probe.all)
   end
   
 end
