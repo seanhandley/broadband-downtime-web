@@ -3,7 +3,7 @@ $(function() {
   $(document).ready(function() {
     chart = new Highcharts.Chart({
       chart: {
-        renderTo: 'container',
+        renderTo: 'graph-stage',
         type: 'line',
         marginRight: 130,
         marginBottom: 25
@@ -17,7 +17,11 @@ $(function() {
         x: -20
       },
       xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: $.parseJSON($.ajax({
+          url: $('#graph-stage').data('xaxis-url'),
+          async: false,
+          dataType: 'json'
+        }).responseText)
       },
       yAxis: {
         title: {
@@ -44,7 +48,11 @@ $(function() {
       },
       series: [{
         name: 'Downtime',
-        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        data: $.parseJSON($.ajax({
+          url: $('#graph-stage').data('plots-url'),
+          async: false,
+          dataType: 'json'
+        }).responseText)
       }]
     });
   });
