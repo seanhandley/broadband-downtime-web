@@ -19,11 +19,17 @@ class ProbesController < ApplicationController
   end
   
   def test
-    respond_with(5.upto(20.0).to_a.sample(12).shuffle)
+    respond_with(((0.upto(5).to_a * range.count).sample(range.count-1) << 20).shuffle)
   end
   
   def months
-    respond_with(Date::MONTHNAMES.compact)
+    respond_with(range)
+  end
+  
+  private
+  
+  def range
+    (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }
   end
   
 end
