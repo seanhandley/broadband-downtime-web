@@ -6,7 +6,7 @@ $(function() {
         renderTo: 'graph-stage',
         type: 'line',
         marginRight: 130,
-        marginBottom: 25
+        marginBottom: 50
       },
       title: {
         text: 'My Downtime',
