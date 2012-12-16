@@ -25,7 +25,7 @@ $(function() {
       },
       yAxis: {
         title: {
-          text: '% test failures'
+          text: '% downtime per day'
         },
         plotLines: [{
           value: 0,
