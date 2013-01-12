@@ -18,8 +18,8 @@ class ProbesController < ApplicationController
     respond_with(Probe.all)
   end
   
-  def test
-    respond_with(((0.upto(5).to_a * range.count).sample(range.count-1) << 20).shuffle)
+  def plot
+    respond_with(Plot.points_for(1.month.ago))
   end
   
   def months
